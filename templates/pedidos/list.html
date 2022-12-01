@@ -6,8 +6,8 @@
     <li> {{ pedidos.id }}</li>
     <li> {{ pedidos.RegEntrada }}</li>
     <li> {{ pedidos.Cliente }}</li>
-    {% comment %} <li> <a href="{% url 'pedidos:op_detail' pedidos.id %}">Ver Orden de pedidos</a></li>
-    <li> <a href="{% url 'pedidos:op_edit' pedidos.id %}">Editar Orden de pedidos</a></li>
+    <li> <a href="{% url 'pedidos:pedidos_detail' pedidos.id %}">Ver Orden de pedidos</a></li>
+    {% comment %} <li> <a href="{% url 'pedidos:op_edit' pedidos.id %}">Editar Orden de pedidos</a></li>
     <li> <a href="{% url 'pedidos:op_delete' pedidos.id %}">ELIMINAR orden de pedidos</a></li> {% endcomment %}
     {% empty %}
     <li>Sin Datos</li>
