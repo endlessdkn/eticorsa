@@ -1,0 +1,16 @@
+<h3> Tambien puede Crear una  <a href={% url 'pedidos:op_nuevo' %}>Nueva Orde de pedidos</a> </h3>
+
+{% for pedidos in OPedidoList %}
+
+<p>
+    <li> {{ pedidos.id }}</li>
+    <li> {{ pedidos.RegEntrada }}</li>
+    <li> {{ pedidos.Cliente }}</li>
+    <li> <a href="{% url 'pedidos:op_detail' pedidos.id %}">Ver Orden de pedidos</a></li>
+    <li> <a href="{% url 'pedidos:op_edit' pedidos.id %}">Editar Orden de pedidos</a></li>
+    <li> <a href="{% url 'pedidos:op_delete' pedidos.id %}">ELIMINAR orden de pedidos</a></li>
+    {% empty %}
+    <li>Sin Datos</li>
+</p>
+
+{% endfor %}
