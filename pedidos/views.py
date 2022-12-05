@@ -10,3 +10,8 @@ class OPedidoListView(ListView):
 class OPedidoDetail(DetailView):
     model = OPedido
     template_name='pedidos/detail.html'
+
+class OPedidoCreateView(CreateView):
+    model = OPedido
+    fields = ['name']
+    template_name = "pedidos/create.html"
