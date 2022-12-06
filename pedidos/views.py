@@ -1,5 +1,7 @@
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+from django.shortcuts import render, reverse
 from pedidos.models import OPedido
+from pedidos.forms import OPedidoForm
 
 # Create your views here.
 class OPedidoListView(ListView):
@@ -13,5 +15,8 @@ class OPedidoDetail(DetailView):
 
 class OPedidoCreateView(CreateView):
     model = OPedido
-    fields = ['name']
+    form_class = OPedidoForm
     template_name = "pedidos/create.html"
+
+    def get_success_url(self):
+        return reverse('pedidos')
