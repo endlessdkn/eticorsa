@@ -1,0 +1,17 @@
+<h3> Tambien puede Crear un  <a href={% url 'envios:envios_create' %}>Nueva Orde de envios</a> </h3>
+
+
+{% for envios in EnvioList %}
+
+<p>
+    <li> {{ envios.id }}</li>
+    <li> {{ envios.RegEntrada }}</li>
+    <li> {{ envios.Cliente }}</li>
+    <li> <a href="{% url 'envios:envios_detail' envios.id %}">Ver Orden de envios</a></li>
+    <li> <a href="{% url 'envios:envios_update' envios.id %}">Editar Orden de envios</a></li>
+    <li> <a href="{% url 'envios:envios_delete' envios.id %}">ELIMINAR orden de envios</a></li>
+    {% empty %}
+    <li>Sin Datos</li>
+</p>
+
+{% endfor %}

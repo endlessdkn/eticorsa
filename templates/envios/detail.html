@@ -1,0 +1,14 @@
+<h2>envios {{object}}</h2>
+<h4>
+    <br>envios No - {{object.id}}
+    <br>Orden de Produccion - {{object.OProduct}}
+    <br>Costo de Placas - {{object.CostoPlacas}}
+    <br>Total de Placas - {{object.TotalPlacas}}
+    <br>Foto envios <img src="{{inicio}}/{{object.Fotoenvios}}" alt="">
+    <br>Fecha de preparacion - {{object.FechaPreparacion}}
+    <br>Fecha de preparacion Placas - {{object.FechaPlacas}}
+    <br>Fecha de Envio Placas - {{object.FechaPlacas}}
+    <br>observaciones - {{object.FechaEnvioPlacas}}
+
+    <li><a href="{% url 'envios:envios' %}">envios</a></li>
+</h4>

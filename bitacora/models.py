@@ -15,14 +15,20 @@ fecha_posterior = today_date + td
 Semana_ant = fecha_anterior.isocalendar()
 Semana_post = fecha_posterior.isocalendar()
 
-ant_sem = Semana_ant[1]
-post_sem = Semana_post[1]
+ant_sem = str(Semana_ant[1])
+post_sem = str(Semana_post[1])
+
+fec_ant=str(fecha_anterior)
+fec_post= str(fecha_posterior)
+
+hoy =str(today_date)
 
 Semana =(
-        (ant_sem, fecha_anterior),
-        (sem, today_date),
-        (post_sem, fecha_posterior),
+        (fec_ant, ant_sem),
+        (hoy, sem),
+        (fec_post, post_sem),
     )
+
 
 # Create your models here.
 class Envios(models.Model):
