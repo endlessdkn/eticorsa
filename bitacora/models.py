@@ -27,7 +27,7 @@ Semana =(
 # Create your models here.
 class Envios(models.Model):
     OProduct = models.ForeignKey(OrdenProduccion,verbose_name='Orden de Producción' ,related_name='OrdenProducto', on_delete=models.CASCADE)
-    FechaPreparacion = models.CharField(choices=Semana, verbose_name='Semana de Produccion' ,max_length=250, help_text='La fecha puede ser este dia, 7 dias antes o 7 dias despues')
+    FechaPreparacion = models.CharField(choices=Semana, verbose_name='Semana de Produccion' ,max_length=250, help_text='La fecha puede ser este dia, una o dos semanas antes o una o dos semanas despues')
     CostoPlacas = models.SmallIntegerField(verbose_name='Costo Placas', null=True, blank=True)
     TotalPlacas = models.SmallIntegerField(verbose_name='Placas Totales', null=True, blank=True)
     FechaPlacas = models.DateField(auto_now=False, auto_now_add=False,verbose_name='Fecha de Preparación Placas', null=True, blank=True)
