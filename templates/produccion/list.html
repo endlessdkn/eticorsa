@@ -1,0 +1,18 @@
+<h3> Tambien puede Crear un  <a href={% url 'produccion:produccion_create' %}>Nueva Orde de produccion</a> </h3>
+
+
+{% for produccion in ProduccionList %}
+
+<p>
+    <li> {{ produccion.id }}</li>
+    <li> {{ produccion.NombreTrabajo }}</li>
+    <li> {{ produccion.Cliente }}</li>
+    <li> {{ produccion.PedidoCantidad }}</li>
+    <li> <a href="{% url 'produccion:produccion_detail' produccion.id %}">Ver Orden de produccion</a></li>
+    <li> <a href="{% url 'produccion:produccion_update' produccion.id %}">Editar Orden de produccion</a></li>
+    <li> <a href="{% url 'produccion:produccion_delete' produccion.id %}">ELIMINAR orden de produccion</a></li>
+    {% empty %}
+    <li>Sin Datos</li>
+</p>
+
+{% endfor %}

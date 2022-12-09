@@ -1,0 +1,12 @@
+<h2>Pedido {{object}}</h2>
+<h4>
+    <br>Folio No - {{object.Folio}}
+    <br>Cliente - {{object.FolioCliente}}
+    <br>Nombre del Cliente - {{object.Cliente}}
+    <br>Nombre del Trabajo - {{object.NombreTrabajo}}
+    <br>Foto Pedido <img src="{{inicio}}/{{object.FotoPedido}}" alt="">
+    <br>Fecha de pedido - {{object.FechaPed}}
+    <br>Fecha de Elaboracion - {{object.FechaElaboracion}}
+    <br>observaciones - {{object.Indicaciones}}
+    <li><a href="{% url 'produccion:produccion' %}">produccion</a></li>
+</h4>
