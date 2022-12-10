@@ -1,0 +1,18 @@
+<h3> Tambien puede Crear un  <a href={% url 'almacen:barniz_create' %}>Nueva Orde de barniz</a> </h3>
+
+
+{% for barniz in BarnizList %}
+
+<p>
+    <li> {{ barniz.id }}</li>
+    <li> {{ barniz.NombreBarniz }}</li>
+    <li> <a href="{% url 'almacen:barniz_detail' barniz.id %}">Ver Orden de barniz</a></li>
+    <li> <a href="{% url 'almacen:barniz_update' barniz.id %}">Editar Orden de barniz</a></li>
+    <li> <a href="{% url 'almacen:barniz_delete' barniz.id %}">ELIMINAR orden de barniz</a></li>
+    {% empty %}
+    <li>Sin Datos</li>
+</p>
+
+<a href={% url 'almacen:almacen' %}>Regresar a control de Almacen</a>
+
+{% endfor %}

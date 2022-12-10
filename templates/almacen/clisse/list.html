@@ -1,0 +1,18 @@
+<h3> Tambien puede Crear un  <a href={% url 'almacen:clisse_create' %}>Nueva Orde de clisse</a> </h3>
+
+
+{% for clisse in ClisseList %}
+
+<p>
+    <li> {{ clisse.id }}</li>
+    <li> {{ clisse.NombreClisse }}</li>
+    <li> <a href="{% url 'almacen:clisse_detail' clisse.id %}">Ver Orden de clisse</a></li>
+    <li> <a href="{% url 'almacen:clisse_update' clisse.id %}">Editar Orden de clisse</a></li>
+    <li> <a href="{% url 'almacen:clisse_delete' clisse.id %}">ELIMINAR orden de clisse</a></li>
+    {% empty %}
+    <li>Sin Datos</li>
+</p>
+
+<a href={% url 'almacen:almacen' %}>Regresar a control de Almacen</a>
+
+{% endfor %}

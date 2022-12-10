@@ -1,0 +1,6 @@
+<form method="post" role="form" enctype="multipart/form-data" action="">{% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Enviar">
+</form>
+
+<li><a href="{% url 'almacen:clisse' %}">almacen</a></li>
