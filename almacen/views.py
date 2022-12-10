@@ -44,11 +44,6 @@ class FoilListView(ListView):
     context_object_name = 'FoilList'
     template_name='almacen/foil/list.html'
 
-class FoilListView(ListView):
-    model = Foil
-    context_object_name = 'FoilList'
-    template_name='almacen/foil/list.html'
-
 class LaminadoListView(ListView):
     model = Laminado
     context_object_name = 'LaminadoList'
@@ -79,10 +74,6 @@ class ClisseDetail(DetailView):
 class LaserDetail(DetailView):
     model = Laser
     template_name='almacen/laser/detail.html'
-
-class FoilDetail(DetailView):
-    model = Foil
-    template_name='almacen/foil/detail.html'
 
 class FoilDetail(DetailView):
     model = Foil
@@ -127,12 +118,6 @@ class ClisseCreate(CreateView):
 class LaserCreate(CreateView):
     model = Laser
     template_name='almacen/laser/create.html'
-    fields = '__all__'
-    success_url = reverse_lazy('almacen:almacen')
-
-class FoilCreate(CreateView):
-    model = Foil
-    template_name='almacen/foil/create.html'
     fields = '__all__'
     success_url = reverse_lazy('almacen:almacen')
 
@@ -192,12 +177,6 @@ class FoilUpdate(UpdateView):
     fields = '__all__'
     success_url = reverse_lazy('almacen:almacen')
 
-class FoilUpdate(UpdateView):
-    model = Foil
-    template_name='almacen/foil/update.html'
-    fields = '__all__'
-    success_url = reverse_lazy('almacen:almacen')
-
 class LaminadoUpdate(UpdateView):
     model = Laminado
     template_name='almacen/laminado/update.html'
@@ -239,12 +218,6 @@ class ClisseDelete(DeleteView):
 class LaserDelete(DeleteView):
     model = Laser
     template_name='almacen/laser/delete.html'
-    fields = '__all__'
-    success_url = reverse_lazy('almacen:almacen')
-
-class FoilDelete(DeleteView):
-    model = Foil
-    template_name='almacen/foil/delete.html'
     fields = '__all__'
     success_url = reverse_lazy('almacen:almacen')
 
