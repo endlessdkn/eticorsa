@@ -1,234 +1,290 @@
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView, TemplateView
 from django.urls import reverse_lazy
 from almacen.models import *
+from django.contrib.auth.mixins import PermissionRequiredMixin, LoginRequiredMixin
 
 # Create your views here.
 #Vista para clasificaicon de modelos de almacen
-class ControlView(TemplateView):
+class ControlView(LoginRequiredMixin, TemplateView):
     template_name = "almacen/control.html"
 
 #Listas en almacen
-
-class PapelListView(ListView):
+class PapelListView(PermissionRequiredMixin, ListView):
     model = Papel
     context_object_name = 'PapelList'
     template_name='almacen/papel/list.html'
+    paginate_by = 9
+    ordering = ['-id']
+    permission_required = 'almacen.view_modelo'
 
-class TintaListView(ListView):
+class TintaListView(PermissionRequiredMixin, ListView):
     model = Tinta
     context_object_name = 'TintaList'
     template_name='almacen/tinta/list.html'
+    paginate_by = 9
+    ordering = ['-id']
+    permission_required = 'almacen.view_modelo'
 
-class BarnizListView(ListView):
+class BarnizListView(PermissionRequiredMixin, ListView):
     model = Barniz
     context_object_name = 'BarnizList'
     template_name='almacen/barniz/list.html'
+    paginate_by = 9
+    ordering = ['-id']
+    permission_required = 'almacen.view_modelo'
 
-class SuajeListView(ListView):
+class SuajeListView(PermissionRequiredMixin, ListView):
     model = Suaje
     context_object_name = 'SuajeList'
     template_name='almacen/suaje/list.html'
+    paginate_by = 9
+    ordering = ['-id']
+    permission_required = 'almacen.view_modelo'
 
-class ClisseListView(ListView):
+class ClisseListView(PermissionRequiredMixin, ListView):
     model = Clisse
     context_object_name = 'ClisseList'
     template_name='almacen/clisse/list.html'
+    paginate_by = 9
+    ordering = ['-id']
+    permission_required = 'almacen.view_modelo'
 
-class LaserListView(ListView):
+class LaserListView(PermissionRequiredMixin, ListView):
     model = Laser
     context_object_name = 'LaserList'
     template_name='almacen/laser/list.html'
+    paginate_by = 9
+    ordering = ['-id']
+    permission_required = 'almacen.view_modelo'
 
-class FoilListView(ListView):
+class FoilListView(PermissionRequiredMixin, ListView):
     model = Foil
     context_object_name = 'FoilList'
     template_name='almacen/foil/list.html'
+    paginate_by = 9
+    ordering = ['-id']
+    permission_required = 'almacen.view_modelo'
 
-class LaminadoListView(ListView):
+class LaminadoListView(PermissionRequiredMixin, ListView):
     model = Laminado
     context_object_name = 'LaminadoList'
     template_name='almacen/laminado/list.html'
+    paginate_by = 9
+    ordering = ['-id']
+    permission_required = 'almacen.view_modelo'
 
 #Detalles de cada producto en almacen
 
-class PapelDetail(DetailView):
+class PapelDetail(PermissionRequiredMixin, DetailView):
     model = Papel
     template_name='almacen/papel/detail.html'
+    permission_required = 'almacen.view_modelo'
 
-class TintaDetail(DetailView):
+class TintaDetail(PermissionRequiredMixin, DetailView):
     model = Tinta
     template_name='almacen/tinta/detail.html'
+    permission_required = 'almacen.view_modelo'
 
-class BarnizDetail(DetailView):
+class BarnizDetail(PermissionRequiredMixin, DetailView):
     model = Barniz
     template_name='almacen/barniz/detail.html'
+    permission_required = 'almacen.view_modelo'
 
-class SuajeDetail(DetailView):
+class SuajeDetail(PermissionRequiredMixin, DetailView):
     model = Suaje
     template_name='almacen/suaje/detail.html'
+    permission_required = 'almacen.view_modelo'
 
-class ClisseDetail(DetailView):
+class ClisseDetail(PermissionRequiredMixin, DetailView):
     model = Clisse
     template_name='almacen/clisse/detail.html'
+    permission_required = 'almacen.view_modelo'
 
-class LaserDetail(DetailView):
+class LaserDetail(PermissionRequiredMixin, DetailView):
     model = Laser
     template_name='almacen/laser/detail.html'
+    permission_required = 'almacen.view_modelo'
 
-class FoilDetail(DetailView):
+class FoilDetail(PermissionRequiredMixin, DetailView):
     model = Foil
     template_name='almacen/foil/detail.html'
+    permission_required = 'almacen.view_modelo'
 
-class LaminadoDetail(DetailView):
+class LaminadoDetail(PermissionRequiredMixin, DetailView):
     model = Laminado
     template_name='almacen/laminado/detail.html'
+    permission_required = 'almacen.view_modelo'
 
 # Vista de Creacion de Productos en almacen
 
-class PapelCreate(CreateView):
+class PapelCreate(PermissionRequiredMixin, CreateView):
     model = Papel
     template_name='almacen/papel/create.html'
     fields = '__all__'
     success_url = reverse_lazy('almacen:almacen')
+    permission_required = ('almacen.view_modelo','almacen.add_modelo')
 
-class TintaCreate(CreateView):
+class TintaCreate(PermissionRequiredMixin, CreateView):
     model = Tinta
     template_name='almacen/tinta/create.html'
     fields = '__all__'
     success_url = reverse_lazy('almacen:almacen')
+    permission_required = ('almacen.view_modelo','almacen.add_modelo')
 
-class BarnizCreate(CreateView):
+class BarnizCreate(PermissionRequiredMixin, CreateView):
     model = Barniz
     template_name='almacen/barniz/create.html'
     fields = '__all__'
     success_url = reverse_lazy('almacen:almacen')
+    permission_required = ('almacen.view_modelo','almacen.add_modelo')
 
-class SuajeCreate(CreateView):
+class SuajeCreate(PermissionRequiredMixin, CreateView):
     model = Suaje
     template_name='almacen/suaje/create.html'
     fields = '__all__'
     success_url = reverse_lazy('almacen:almacen')
+    permission_required = ('almacen.view_modelo','almacen.add_modelo')
 
-class ClisseCreate(CreateView):
+class ClisseCreate(PermissionRequiredMixin, CreateView):
     model = Clisse
     template_name='almacen/clisse/create.html'
     fields = '__all__'
     success_url = reverse_lazy('almacen:almacen')
+    permission_required = ('almacen.view_modelo','almacen.add_modelo')
 
-class LaserCreate(CreateView):
+class LaserCreate(PermissionRequiredMixin, CreateView):
     model = Laser
     template_name='almacen/laser/create.html'
     fields = '__all__'
     success_url = reverse_lazy('almacen:almacen')
+    permission_required = ('almacen.view_modelo','almacen.add_modelo')
 
-class FoilCreate(CreateView):
+class FoilCreate(PermissionRequiredMixin, CreateView):
     model = Foil
     template_name='almacen/foil/create.html'
     fields = '__all__'
     success_url = reverse_lazy('almacen:almacen')
+    permission_required = ('almacen.view_modelo','almacen.add_modelo')
 
-class LaminadoCreate(CreateView):
+class LaminadoCreate(PermissionRequiredMixin, CreateView):
     model = Laminado
     template_name='almacen/laminado/create.html'
     fields = '__all__'
     success_url = reverse_lazy('almacen:almacen')
+    permission_required = ('almacen.view_modelo','almacen.add_modelo')
 
 #Clase para actualizar
 
-class PapelUpdate(UpdateView):
+class PapelUpdate(PermissionRequiredMixin, UpdateView):
     model = Papel
     template_name='almacen/papel/update.html'
     fields = '__all__'
     success_url = reverse_lazy('almacen:almacen')
+    permission_required = ('almacen.view_modelo','almacen.add_modelo')
 
-class TintaUpdate(UpdateView):
+class TintaUpdate(PermissionRequiredMixin, UpdateView):
     model = Tinta
     template_name='almacen/tinta/update.html'
     fields = '__all__'
     success_url = reverse_lazy('almacen:almacen')
+    permission_required = ('almacen.view_modelo','almacen.add_modelo')
 
-class BarnizUpdate(UpdateView):
+class BarnizUpdate(PermissionRequiredMixin, UpdateView):
     model = Barniz
     template_name='almacen/barniz/update.html'
     fields = '__all__'
     success_url = reverse_lazy('almacen:almacen')
+    permission_required = ('almacen.view_modelo','almacen.add_modelo')
 
-class SuajeUpdate(UpdateView):
+class SuajeUpdate(PermissionRequiredMixin, UpdateView):
     model = Suaje
     template_name='almacen/suaje/update.html'
     fields = '__all__'
     success_url = reverse_lazy('almacen:almacen')
+    permission_required = ('almacen.view_modelo','almacen.add_modelo')
 
-class ClisseUpdate(UpdateView):
+class ClisseUpdate(PermissionRequiredMixin, UpdateView):
     model = Clisse
     template_name='almacen/clisse/update.html'
     fields = '__all__'
     success_url = reverse_lazy('almacen:almacen')
+    permission_required = ('almacen.view_modelo','almacen.add_modelo')
 
-class LaserUpdate(UpdateView):
+class LaserUpdate(PermissionRequiredMixin, UpdateView):
     model = Laser
     template_name='almacen/laser/update.html'
     fields = '__all__'
     success_url = reverse_lazy('almacen:almacen')
+    permission_required = ('almacen.view_modelo','almacen.add_modelo')
 
-class FoilUpdate(UpdateView):
+class FoilUpdate(PermissionRequiredMixin, UpdateView):
     model = Foil
     template_name='almacen/foil/update.html'
     fields = '__all__'
     success_url = reverse_lazy('almacen:almacen')
+    permission_required = ('almacen.view_modelo','almacen.add_modelo')
 
-class LaminadoUpdate(UpdateView):
+class LaminadoUpdate(PermissionRequiredMixin, UpdateView):
     model = Laminado
     template_name='almacen/laminado/update.html'
     fields = '__all__'
     success_url = reverse_lazy('almacen:almacen')
+    permission_required = ('almacen.view_modelo','almacen.add_modelo')
 
 #Vistas para Borrar
 
-class PapelDelete(DeleteView):
+class PapelDelete(PermissionRequiredMixin, DeleteView):
     model = Papel
     template_name='almacen/papel/delete.html'
     fields = '__all__'
     success_url = reverse_lazy('almacen:almacen')
+    permission_required = ('almacen.view_modelo','almacen.delete_modelo')
 
-class TintaDelete(DeleteView):
+class TintaDelete(PermissionRequiredMixin, DeleteView):
     model = Tinta
     template_name='almacen/tinta/delete.html'
     fields = '__all__'
     success_url = reverse_lazy('almacen:almacen')
+    permission_required = ('almacen.view_modelo','almacen.delete_modelo')
 
-class BarnizDelete(DeleteView):
+class BarnizDelete(PermissionRequiredMixin, DeleteView):
     model = Barniz
     template_name='almacen/barniz/delete.html'
     fields = '__all__'
     success_url = reverse_lazy('almacen:almacen')
+    permission_required = ('almacen.view_modelo','almacen.delete_modelo')
 
-class SuajeDelete(DeleteView):
+class SuajeDelete(PermissionRequiredMixin, DeleteView):
     model = Suaje
     template_name='almacen/suaje/delete.html'
     fields = '__all__'
     success_url = reverse_lazy('almacen:almacen')
+    permission_required = ('almacen.view_modelo','almacen.delete_modelo')
 
-class ClisseDelete(DeleteView):
+class ClisseDelete(PermissionRequiredMixin, DeleteView):
     model = Clisse
     template_name='almacen/clisse/delete.html'
     fields = '__all__'
     success_url = reverse_lazy('almacen:almacen')
+    permission_required = ('almacen.view_modelo','almacen.delete_modelo')
 
-class LaserDelete(DeleteView):
+class LaserDelete(PermissionRequiredMixin, DeleteView):
     model = Laser
     template_name='almacen/laser/delete.html'
     fields = '__all__'
     success_url = reverse_lazy('almacen:almacen')
+    permission_required = ('almacen.view_modelo','almacen.delete_modelo')
 
-class FoilDelete(DeleteView):
+class FoilDelete(PermissionRequiredMixin, DeleteView):
     model = Foil
     template_name='almacen/foil/delete.html'
     fields = '__all__'
     success_url = reverse_lazy('almacen:almacen')
+    permission_required = ('almacen.view_modelo','almacen.delete_modelo')
 
-class LaminadoDelete(DeleteView):
+class LaminadoDelete(PermissionRequiredMixin, DeleteView):
     model = Laminado
     template_name='almacen/laminado/delete.html'
     fields = '__all__'
     success_url = reverse_lazy('almacen:almacen')
+    permission_required = ('almacen.view_modelo','almacen.delete_modelo')

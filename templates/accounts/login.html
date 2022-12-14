@@ -1,0 +1,28 @@
+{% if form.errors %}
+<p>Tu nombre de usuario y Contraseña No Coinciden, Favor de Intentar nuevamente</p>
+{% endif %}
+
+{% if next %}
+    {% if user.is_authenticated %}
+    <p>Tu cuenta no tiene acceso a esta pagina. Para Acceder, de favor inicia sesión.</p>
+    {% else %}
+    <p>Por favor Inicia sesion en esta pagina</p>
+    {% endif %}
+{% endif %}
+
+<form method="post" action="{% url 'login' %}">
+{% csrf_token %}
+<table>
+<tr>
+    <td>{{ form.username.label_tag }}</td>
+    <td>{{ form.username }}</td>
+</tr>
+<tr>
+    <td>{{ form.password.label_tag }}</td>
+    <td>{{ form.password }}</td>
+</tr>
+</table>
+
+<input type="submit" value="login">
+<input type="hidden" name="next" value="{{ next }}">
+</form>
