@@ -1,0 +1,14 @@
+<h1>Inicio</h1>
+
+<table border="1">
+{% for empresa in myempresa %}
+<tr>
+<td>{{ empresa.id }}</td>
+<td>{{ empresa.NomEmpresa }}</td>
+<td>{{ empresa.ImgEmpresa }}</td>
+{% empty %}
+<td>no hay datos</td>
+</tr>
+{% endfor %}
+
+</table>
