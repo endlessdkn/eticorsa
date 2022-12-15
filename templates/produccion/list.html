@@ -1,3 +1,8 @@
+{% extends "index.html" %}
+{% block title %}Produccion{% endblock title %}
+
+{% block content %}
+
 <h3> Tambien puede Crear un  <a href={% url 'produccion:produccion_create' %}>Nueva Orde de produccion</a> </h3>
 
 
@@ -16,3 +21,5 @@
 </p>
 
 {% endfor %}
+
+{% endblock %}

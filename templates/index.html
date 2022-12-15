@@ -1,14 +1,30 @@
-<h1>Inicio</h1>
+<!DOCTYPE html>
+<html lang="es-mx">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Servidor Eticorsa - {% block title %}{% endblock title %}</title>
+</head>
+<body>
+    <h2>Menu</h2>
+    <a href="{% url 'almacen:almacen' %}">almacen</a>
+<a href="{% url 'envios:envios' %}">envios</a>
+<a href="{% url 'pedidos:pedidos' %}">pedidos</a>
+<a href="{% url 'produccion:produccion' %}">produccion</a>
 
-<table border="1">
-{% for empresa in myempresa %}
-<tr>
-<td>{{ empresa.id }}</td>
-<td>{{ empresa.NomEmpresa }}</td>
-<td>{{ empresa.ImgEmpresa }}</td>
-{% empty %}
-<td>no hay datos</td>
-</tr>
-{% endfor %}
+<a href="{% url 'logout' %}">Cerrar Sesion</a>
 
-</table>
+    <h2>Contenido</h2>
+    <div>
+    {% block content %}
+    {% if content is empty %}
+    <h2>Aqui van datos cuando no se seleccione una aplicacion</h2>
+        {% endif %}
+    {% endblock %}
+    </div>
+    <h2>Footer</h2>
+
+</body>
+</html> 

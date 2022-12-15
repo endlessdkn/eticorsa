@@ -2,6 +2,8 @@ from django.views.generic import ListView, DetailView, CreateView, UpdateView, D
 from django.urls import reverse_lazy
 from produccion.models import OrdenProduccion
 from django.contrib.auth.mixins import PermissionRequiredMixin
+from empresa.models import Empresa
+
 
 # Create your views here.
 class ProduccionListVIew(PermissionRequiredMixin, ListView):
@@ -11,6 +13,11 @@ class ProduccionListVIew(PermissionRequiredMixin, ListView):
     paginate_by = 9
     ordering = ['-id']
     permission_required = 'produccion.view_ordenproduccion'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['empresa'] = Empresa.objects.all()
+        return context
 
 class ProduccionDetail(PermissionRequiredMixin, DetailView):
     model = OrdenProduccion
