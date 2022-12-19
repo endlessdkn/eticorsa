@@ -1,14 +1,19 @@
-<h3> Tambien puede Crear un  <a href={% url 'almacen:foil_create' %}>Nueva Orde de foil</a> </h3>
+{% extends "index.html" %}
+{% block title %}Almacen{% endblock title %}
+
+{% block content %}
+
+<h3> Tambien puede Crear un  <a href={% url 'almacen:papel_create' %}>Nueva Orde de papel</a> </h3>
 
 
-{% for foil in FoilList %}
+{% for papel in PapelList %}
 
 <p>
-    <li> {{ foil.id }}</li>
-    <li> {{ foil.NombreFoil }}</li>
-    <li> <a href="{% url 'almacen:foil_detail' foil.id %}">Ver Orden de foil</a></li>
-    <li> <a href="{% url 'almacen:foil_update' foil.id %}">Editar Orden de foil</a></li>
-    <li> <a href="{% url 'almacen:foil_delete' foil.id %}">ELIMINAR orden de foil</a></li>
+    <li> {{ papel.id }}</li>
+    <li> {{ papel.Nombrepapel }}</li>
+    <li> <a href="{% url 'almacen:papel_detail' papel.id %}">Ver Orden de papel</a></li>
+    <li> <a href="{% url 'almacen:papel_update' papel.id %}">Editar Orden de papel</a></li>
+    <li> <a href="{% url 'almacen:papel_delete' papel.id %}">ELIMINAR orden de papel</a></li>
     {% empty %}
     <li>Sin Datos</li>
 </p>
@@ -16,3 +21,5 @@
 <a href={% url 'almacen:almacen' %}>Regresar a control de Almacen</a>
 
 {% endfor %}
+
+{% endblock %}

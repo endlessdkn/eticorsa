@@ -1,3 +1,8 @@
+{% extends "index.html" %}
+{% block title %}Almacen{% endblock title %}
+
+{% block content %}
+
 <form method="post">{% csrf_token %}
     <p>Desea Borrar la Orden de almacen-  "{{ object }}"?</p>
         <input type="submit" value="Eliminar">
@@ -6,3 +11,4 @@
  <a href="{% url 'almacen:barniz' %}">
     Cancel
   </a>
+  {% endblock %}

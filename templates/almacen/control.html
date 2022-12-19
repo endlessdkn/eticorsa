@@ -1,1 +1,17 @@
+{% extends "index.html" %}
+{% block title %}Almacen{% endblock title %}
+
+{% block content %}
+
 <h2>Lista de suministrso de almacen</h2>
+
+<a href={% url 'almacen:barniz' %}>Barniz</a>
+<a href={% url 'almacen:clisse' %}>Clisse</a>
+<a href={% url 'almacen:foil' %}>Foil</a>
+<a href={% url 'almacen:laminado' %}>Laminado</a>
+<a href={% url 'almacen:suaje' %}>Suaje</a>
+<a href={% url 'almacen:tinta' %}>Tinta</a>
+<a href={% url 'almacen:papel' %}>Papel</a>
+<a href={% url 'almacen:laser' %}>laser</a>
+
+{% endblock %}

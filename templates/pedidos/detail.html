@@ -1,3 +1,8 @@
+{% extends "index.html" %}
+{% block title %}Pedidos{% endblock title %}
+
+{% block content %}
+
 <h2>Pedido {{object}}</h2>
 <h4>
     <br>Pedido No - {{object.id}}
@@ -10,3 +15,5 @@
     <br>observaciones - {{object.Indicaciones}}
     <li><a href="{% url 'pedidos:pedidos' %}">pedidos</a></li>
 </h4>
+
+{% endblock %}

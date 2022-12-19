@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+{% comment %} <!DOCTYPE html>
 <html lang="es-mx">
 <head>
     {% load static %}
@@ -27,4 +27,47 @@
     <h2>Footer</h2>
 
 </body>
-</html> 
+</html>  {% endcomment %}
+
+<html lang="es-mx">
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <title>Servidor Eticorsa • {% block title %}{% endblock title %}</title>
+    <!-- CSS files -->
+    {% load static %}
+    <link href="{% static 'dist/css/tabler.min.css' %}" rel="stylesheet" />
+    <link href="{% static 'dist/css/tabler-flags.min.css' %}" rel="stylesheet"/>
+    <link href="{% static 'dist/css/tabler-payments.min.css' %}" rel="stylesheet"/>
+    <link href="{% static 'dist/css/tabler-vendors.min.css' %}" rel="stylesheet"/>
+    <link href="{% static 'dist/css/demo.min.css' %}" rel="stylesheet" />
+  </head>
+  <body >
+    <div class="page">
+        {% include "header.html" %}
+        {% include "menu.html" %}
+        {% block content %}
+                {% if content is empty %}
+                {% endif %}
+        <div class="page-wrapper">
+          <div class="container-xl">
+            <div class="page-header d-print-none">
+              <div class="row g-2 align-items-center">
+                <div class="col">
+                <h2 class="page-title">Aqui van datos cuando no se seleccione una aplicacion</h2>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="page-body">
+            <div class="container-xl">
+            </div>
+          </div>
+        </div>
+        {% endblock %}
+      
+        {% include "footer.html" %}
+        
+  </body>
+</html>

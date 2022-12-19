@@ -1,3 +1,8 @@
+{% extends "index.html" %}
+{% block title %}Produccion{% endblock title %}
+
+{% block content %}
+
 <h2>Pedido {{object}}</h2>
 <h4>
     <br>Folio No - {{object.Folio}}
@@ -10,3 +15,5 @@
     <br>observaciones - {{object.Indicaciones}}
     <li><a href="{% url 'produccion:produccion' %}">produccion</a></li>
 </h4>
+
+{% endblock %}

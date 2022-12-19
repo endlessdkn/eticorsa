@@ -1,3 +1,9 @@
+{% extends "index.html" %}
+{% block title %}Almacen{% endblock title %}
+
+{% block content %}
+
+
 <h3> Tambien puede Crear un  <a href={% url 'almacen:foil_create' %}>Nueva Orde de foil</a> </h3>
 
 
@@ -16,3 +22,5 @@
 <a href={% url 'almacen:almacen' %}>Regresar a control de Almacen</a>
 
 {% endfor %}
+
+{% endblock %}

@@ -1,3 +1,8 @@
+{% extends "index.html" %}
+{% block title %}Envios{% endblock title %}
+
+{% block content %}
+
 <form method="post">{% csrf_token %}
     <p>Desea Borrar la Orden de Envios-  "{{ object }}"?</p>
         <input type="submit" value="Eliminar">
@@ -6,3 +11,6 @@
  <a href="{% url 'envios:envios' %}">
     Cancel
   </a>
+
+  
+{% endblock %}
