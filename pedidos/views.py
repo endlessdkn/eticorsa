@@ -1,6 +1,7 @@
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 from pedidos.models import OPedido
+from pedidos.forms import OPedidoForm
 from django.contrib.auth.mixins import PermissionRequiredMixin
 
 # Create your views here.
@@ -18,8 +19,9 @@ class OPedidoDetail(PermissionRequiredMixin, DetailView):
     permission_required = 'pedidos.view_opedido'
 
 class OPedidoCreateView(PermissionRequiredMixin, CreateView):
-    model = OPedido
-    fields = '__all__'
+    form_class = OPedidoForm
+    #model = OPedido
+    #fields = '__all__'
     template_name = "pedidos/create.html"
     success_url = reverse_lazy('pedidos:pedidos')
     permission_required = ('pedidos.view_opedido', 'pedidos.add_opedido')
