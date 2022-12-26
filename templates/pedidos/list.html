@@ -2,7 +2,7 @@
 {% block title %}Pedidos{% endblock title %}
 
 {% block content %}
-
+{% comment %} 
 <h3> Tambien puede Crear un  <a href={% url 'pedidos:pedidos_create' %}>Nueva Orde de pedidos</a> </h3>
 
 
@@ -19,6 +19,141 @@
     <li>Sin Datos</li>
 </p>
 
-{% endfor %}
+{% endfor %} 
+
+{% endblock %} {% endcomment %}
+
+
+<div class="page-wrapper">
+    <div class="container-xl">
+      <!-- Page title -->
+      <div class="page-header d-print-none">
+        <div class="row g-2 align-items-center">
+          <div class="col">
+            <!-- Page pre-title -->
+            <div class="page-pretitle">
+              Visualizador
+            </div>
+            <h2 class="page-title">
+              Ordenes de Pedidos
+            </h2>
+          </div>
+          <!-- Page title actions -->
+          <div class="col-12 col-md-auto ms-auto d-print-none">
+            <div class="btn-list">
+              <a href="{% url 'pedidos:pedidos_create' %}" class="btn btn-primary d-none d-sm-inline-block">
+                <!-- Download SVG icon from http://tabler-icons.io/i/plus -->
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><line x1="12" y1="5" x2="12" y2="19" /><line x1="5" y1="12" x2="19" y2="12" /></svg>
+                Nueva Orde de Pedido
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="page-body">
+      <div class="container-xl">
+        <div class="row row-deck row-cards">
+
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Pedidos</h3>
+              </div>
+              <div class="table-responsive">
+                <table class="table card-table table-vcenter text-nowrap datatable">
+                  <thead>
+                    <tr>
+                      <th class="w-1"></th>
+                      <th class="w-1">No. <!-- Download SVG icon from http://tabler-icons.io/i/chevron-up -->
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-sm text-dark icon-thick" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><polyline points="6 15 12 9 18 15" /></svg>
+                      </th>
+                      <th>Pedido</th>
+                      <th>Cliente</th>
+                      <th>Tipo de Muestra</th>
+                      <th>Acciones</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for pedidos in OPedidoList %}
+                    <tr>
+                      <td></td>
+                      <td><span class="text-muted">{{ pedidos.id }}</span></td>
+                      <td>{{ pedidos.RegEntrada }}</td>
+                      <td>{{ pedidos.Cliente }}</td>
+                      <td>
+                        {{ pedidos.Cliente.Muestra }}
+                      </td>
+                      <td>
+                        <a class="btn btn-outline-secondary w-30" href="{% url 'pedidos:pedidos_detail' pedidos.id %}">Detalles</a>
+                        <a class="btn btn-outline-primary w-30" href="{% url 'pedidos:pedidos_update' pedidos.id %}">Editar</a>
+                        </td>
+                      <td class="text-end">
+                        <span class="dropdown">
+                            <a class="btn btn-outline-danger w-30" href="{% url 'pedidos:pedidos_delete' pedidos.id %}">ELIMINAR</a>
+                        </span>
+                      </td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td></td>
+                        <td><span class="text-muted">-</span></td>
+                        <td>-</td>
+                        <td>
+                          -
+                        </td>
+                        <td>
+                          -Sin datos-
+                        </td>
+                        <td>
+                          -
+                        </td>
+                        <td>
+                          -
+                        </td>
+                        <td>
+                          -
+                          </td>
+                        <td class="text-end">
+                          <span class="dropdown">
+                              -
+                          </span>
+                        </td>
+                      </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+              <div class="card-body d-flex align-items-center">
+                <ul class="pagination m-0 ms-auto">
+                  <li class="page-item">
+                    <a class="page-link" href="?page={{Page.start_index}}">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><polyline points="15 6 9 12 15 18" /></svg>
+                      primera
+                    </a>
+                  </li>
+                  {% if page_obj.has_previous %}
+                  <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">{{ page_obj.previous_page_number }}</a></li>
+                  {% endif %}
+                  <li class="page-item active"><a class="page-link" href="?page={{ page_obj.number }}">{{ page_obj.number }}</a></li>
+                  {% if page_obj.has_next %}
+                  <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">{{ page_obj.next_page_number }}</a></li>
+                  {% endif %}
+                  <li class="page-item">
+                    <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">
+                      Ultima <!-- Download SVG icon from http://tabler-icons.io/i/chevron-right -->
+                      <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><polyline points="9 6 15 12 9 18" /></svg>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+</div>
 
 {% endblock %}

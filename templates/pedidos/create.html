@@ -3,11 +3,83 @@
 
 {% block content %}
 
-<form method="post" role="form" enctype="multipart/form-data" action="">{% csrf_token %}
+{% comment %} <form method="post" role="form" enctype="multipart/form-data" action="">{% csrf_token %}
     {{ form.as_p }}
     <input type="submit" value="Enviar">
-</form>
-
+</form> 
 <li><a href="{% url 'pedidos:pedidos' %}">pedidos</a></li>
+{% endcomment %}
+
+
+
+<div class="page-wrapper">
+    <div class="container-xl">
+      <!-- Page title -->
+      <div class="page-header d-print-none">
+        <div class="row g-2 align-items-center">
+          <div class="col">
+            <!-- Page pre-title -->
+            <div class="page-pretitle">
+              Crear
+            </div>
+            <h2 class="page-title">
+              Nuevo Diseño
+            </h2>
+          </div>
+          <!-- Page title actions -->
+          <div class="col-12 col-md-auto ms-auto d-print-none">
+            <div class="btn-list">
+              <span class="d-none d-sm-inline">
+                <a href="{% url 'pedidos:pedidos' %}" class="btn btn-white">
+                  Regresar
+                </a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="page-body">
+      <div class="container-xl">
+        <div class="row row-deck row-cards">
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-header border-0">
+                    <div class="card-title">Ingrese sus Datos</div>
+                    </div>
+                    <div class="position-relative">
+                    <div class="position-absolute top-0 left-0 px-3 mt-1 w-75">
+                        <div class="row g-2">
+                        <div class="col-auto">
+                            <div class="chart-sparkline chart-sparkline-square"></div>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="row g-2 card-table table-responsive"></div>
+                    <div class="card card-md">
+                        <form method="post" role="form" enctype="multipart/form-data" action="">{% csrf_token %}
+
+                        <div class="col-md-6 col-xl-12">
+                            <div class="mb-3">
+                                <label class="form-control-plaintext">
+                                    <div class="form-control">{{ form.as_p }}</div></label>
+                                <div class="col-6 col-sm-4 col-md-2 col-xl py-3">
+                                    <input class="btn btn-outline-success w-100" type="submit" value="Save">
+                                </div>
+                            </div>
+                        </div>
+                        <input type="submit" value="Enviar">
+                    </form>
+
+                    </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
 
 {% endblock %}

@@ -1,9 +1,10 @@
 {% extends "index.html" %}
-{% block title %}Pedidos{% endblock title %}
+{% block title %}Borrar - {{object}}{% endblock title %}
+{% load static %}
 
 {% block content %}
 
-
+{% comment %} 
 <form method="post">{% csrf_token %}
     <p>Desea Borrar la Orden de Produccion-  "{{ object }}"?</p>
         <input type="submit" value="Eliminar">
@@ -11,6 +12,39 @@
 
  <a href="{% url 'pedidos:pedidos' %}">
     Cancel
-  </a>
+  </a> {% endcomment %}
+
+  <form method="post">{% csrf_token %}
+    <div class="example no_toc_section">
+        <div class="example-content">
+          <div class="example-modal-backdrop"></div>
+          <div class="modal d-block position-relative" tabindex="-1">
+            <div class="modal-dialog modal-sm" role="document">
+              <div class="modal-content">
+                <div class="modal-status bg-danger"></div>
+                <div class="modal-body text-center py-4">
+                  <!-- Download SVG icon from http://tabler-icons.io/i/alert-triangle -->
+                  <svg xmlns="http://www.w3.org/2000/svg" class="icon mb-2 text-danger icon-lg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M12 9v2m0 4v.01" /><path d="M5 19h14a2 2 0 0 0 1.84 -2.75l-7.1 -12.25a2 2 0 0 0 -3.5 0l-7.1 12.25a2 2 0 0 0 1.75 2.75" /></svg>
+                  <h3>Desea Realizar la Siguiente Acción?</h3>
+                  <div class="text-muted">Desea Borrar el Pedido -  "{{ object }}"?</div>
+                </div>
+                <div class="modal-footer">
+                  <div class="w-100">
+                    <div class="row">
+                      <div class="col"><a href="{% url 'pedidos:pedidos' %}" class="btn w-100">
+                          Cancel
+                        </a></div>
+                      <div class="col">
+                        <input class="btn btn-danger w-100" type="submit" value="Eliminar">
+                    </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form> 
 
   {% endblock %}
